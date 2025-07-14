@@ -14,8 +14,15 @@ def test_accept_analytics_cookies():
             time.sleep(5)
 
             cookie_page = CookieConsentPage(page)
-            cookie_page.customize_button.wait_for(timeout=20000)
+            try:
+                cookie_page.customize_button.wait_for(timeout=20000, state="visible")
+            except Exception as e:
+                page.screenshot(path=f"screenshot-{browser_type.name}.png")
+                raise RuntimeError(f"{browser_type.name}: customize button not found!") from e
+
             cookie_page.customize_button.click()
+            # cookie_page.customize_button.wait_for(timeout=20000)
+            # cookie_page.customize_button.click()
             cookie_page.analytics_toggle.click()
             cookie_page.accept_selected_button.click()
 
