@@ -9,6 +9,7 @@ def test_accept_analytics_cookies():
             page = context.new_page()
 
             page.goto("https://www.ing.pl")
+            page.wait_for_load_state("networkidle")
 
             cookie_page = CookieConsentPage(page)
             cookie_page.customize_button.wait_for(timeout=10000)
