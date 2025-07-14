@@ -5,7 +5,7 @@ class CookieConsentPage:
         self.page = page
 
         self.analytics_section = page.locator("div.cookie-policy-type:has(h3#header-2-analytical)") 
-        self.customize_button = page.locator('.js-cookie-policy-main-settings-button')
+        self.customize_button = page.get_by_role("button", name="Dostosuj")
         self.analytics_toggle = self.analytics_section.locator("span.cookie-policy-toggle-slider")
         self.accept_selected_button = page.locator("button.js-cookie-policy-settings-decline-button.cookie-policy-button.is--primary", has_text="Zaakceptuj zaznaczone")
         
