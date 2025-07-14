@@ -11,11 +11,10 @@ def test_accept_analytics_cookies():
 
             page.goto("https://www.ing.pl", wait_until="domcontentloaded")
             page.wait_for_load_state("networkidle")
-            time.sleep(5)
 
             cookie_page = CookieConsentPage(page)
             try:
-                cookie_page.customize_button.wait_for(timeout=20000, state="visible")
+                cookie_page.customize_button.wait_for(timeout=20000)
             except Exception as e:
                 page.screenshot(path=f"screenshot-{browser_type.name}.png")
                 raise RuntimeError(f"{browser_type.name}: customize button not found!") from e
