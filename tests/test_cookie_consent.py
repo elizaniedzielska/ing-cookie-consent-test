@@ -11,6 +11,7 @@ def test_accept_analytics_cookies():
             page.goto("https://www.ing.pl")
 
             cookie_page = CookieConsentPage(page)
+            page.wait_for_selector(".js-cookie-policy-main-settings-button", timeout=10000)
             cookie_page.customize_button.click()
             cookie_page.analytics_toggle.click()
             cookie_page.accept_selected_button.click()
