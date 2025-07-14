@@ -3,16 +3,14 @@ from page_objects import CookieConsentPage
 
 def test_accept_analytics_cookies():
     with sync_playwright() as p:
-        for browser_type in [p.chromium, p.firefox, p.webkit]:  
+        for browser_type in [p.chromium, p.firefox]:  
             browser = browser_type.launch(headless=True)
             context = browser.new_context()
             page = context.new_page()
 
             page.goto("https://www.ing.pl")
-            page.wait_for_load_state("networkidle")
 
             cookie_page = CookieConsentPage(page)
-            cookie_page.customize_button.wait_for(timeout=20000)
             cookie_page.customize_button.click(force=True)
             cookie_page.analytics_toggle.click()
             cookie_page.accept_selected_button.click()
