@@ -13,7 +13,7 @@ def test_accept_analytics_cookies():
 
             cookie_page = CookieConsentPage(page)
             cookie_page.customize_button.wait_for(timeout=20000)
-            cookie_page.customize_button.click()
+            cookie_page.customize_button.click(force=True)
             cookie_page.analytics_toggle.click()
             cookie_page.accept_selected_button.click()
 
