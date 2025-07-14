@@ -1,3 +1,4 @@
+import time
 from playwright.sync_api import sync_playwright
 from page_objects import CookieConsentPage
 
@@ -10,6 +11,7 @@ def test_accept_analytics_cookies():
 
             page.goto("https://www.ing.pl")
             page.wait_for_load_state("networkidle")
+            time.sleep(5)
 
             cookie_page = CookieConsentPage(page)
             cookie_page.customize_button.wait_for(timeout=30000, state="visible")
