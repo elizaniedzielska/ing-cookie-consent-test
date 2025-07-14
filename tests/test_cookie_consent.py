@@ -4,7 +4,7 @@ from page_objects import CookieConsentPage
 def test_accept_analytics_cookies():
     with sync_playwright() as p:
         for browser_type in [p.chromium, p.firefox, p.webkit]:  
-            browser = browser_type.launch(headless=False)
+            browser = browser_type.launch(headless=True)
             context = browser.new_context()
             page = context.new_page()
 
