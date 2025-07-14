@@ -9,7 +9,7 @@ def test_accept_analytics_cookies():
             context = browser.new_context()
             page = context.new_page()
 
-            page.goto("https://www.ing.pl")
+            page.goto("https://www.ing.pl", wait_until="domcontentloaded")
             page.wait_for_load_state("networkidle")
             time.sleep(5)
 
